@@ -29,3 +29,6 @@ log_to_systemd_journal "$IDENTIFIER" backup_regular_packages_list
 
 log_to_systemd_journal "$IDENTIFIER" echo "Impostazione dei permessi corretti per le liste di pacchetti..."
 log_to_systemd_journal "$IDENTIFIER" set_right_permissions_on_backup_files
+
+log_to_systemd_journal "$IDENTIFIER" echo "Salvataggio su GitHub delle liste di pacchetti..."
+log_to_systemd_journal "$IDENTIFIER" save_packages_lists_on_github

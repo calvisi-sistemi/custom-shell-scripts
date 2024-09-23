@@ -43,9 +43,9 @@ function backup_aur_packages_list(){
 }
 
 # Carico su GitHub le liste aggiornate
-function commit_and_push_on_github(){
+function save_packages_lists_on_github(){
     local COMMIT_MESSAGE="Pacchetti installati alla data $(date)"
-    git add "$PACKAGES_LIST_PATH"
-    git commit -m "$COMMIT_MESSAGE"
-    git push
+    sudo -u "$MACHINE_OWNER_USERNAME" git -C "$PACKAGES_LIST_PATH" add .
+    sudo -u "$MACHINE_OWNER_USERNAME" git -C "$PACKAGES_LIST_PATH" commit -m "$COMMIT_MESSAGE"
+    sudo -u "$MACHINE_OWNER_USERNAME" git -C "$PACKAGES_LIST_PATH" push
 }
