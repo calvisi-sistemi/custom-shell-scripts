@@ -1,8 +1,10 @@
 #! /bin/bash 
-PACKAGES_LIST_PATH="/home/lc/.system_informations/packages"
-IDENTIFIER="Automated Daily Packages Maintenance Script"
 
+source "./general-utilities.sh"
 source "./package-management.sh"
+
+PACKAGES_LIST_PATH="$SYSTEM_INFO_PATH/packages"
+IDENTIFIER="Automated Daily Packages Maintenance Script"
 
 mkdir -p $PACKAGES_LIST_PATH # Crea la cartella di backup se non esiste
 
