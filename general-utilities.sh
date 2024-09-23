@@ -22,3 +22,16 @@ function log_to_systemd_journal(){
         "$@" 2> >(systemd-cat -t "$IDENTIFIER" --stderr-priority="$ERROR_PRIORITY") | systemd-cat -t "$IDENTIFIER"
     }
 }
+
+# Prende come unico argomento il nome di un utente e restituisce la sua homedirectory
+function get_home_directory(){
+
+	local NUMBER_OF_ARGUMENTS=$#
+	if [[ $NUMBER_OF_ARGUMENTS -ne 1 ]]; then
+		echo "get_home_directory: Devi specificare ESATTAMENTE UN ARGOMENTO. Né più né meno"
+		exit 2
+	fi
+	
+	getent passwd "$1" | awk -F: '{print $6}'
+	
+}
